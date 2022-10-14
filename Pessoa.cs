@@ -7,12 +7,22 @@ namespace Teste
 {
     public abstract class Pessoa
     {
-        public int cpf { get; set; }
-        public string name { get; set; }
-        public bool enrecoComercial { get; set; }
 
-        public void PagarImposto() {
+        public string? Nome { get; set; }
 
+        public string? Email { get; set; }
+        
+        public float Salario { get; set; }
+
+        public Endereco? Endereco { get; set;}
+
+        public abstract float PagarImposto(float salario);
+
+        public bool GravarRegistro() 
+        {
+            return true;
         }
+
     }
+
 }
