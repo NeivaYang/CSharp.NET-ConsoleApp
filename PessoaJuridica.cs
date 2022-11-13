@@ -5,37 +5,36 @@ using System.Threading.Tasks;
 
 namespace Teste
 {
-    public class PessoaJuridica : Pessoa
+        public class PessoaJuridica : Pessoa
     {
-        public string? CNPJ { get; set; }
-
-        public string? RazaoSocial { get; set; }
+        public string? CNPJ {get;set;}
+        public string? RazaoSocial {get;set;}
 
         public override float PagarImposto(float salario)
         {
-            if (salario<= 500)
-            {
-                 return salario * .06f;
-            }
-            else if (salario <5000 && salario <= 10000) 
-            {
-                return salario * .08f;
+            float imposto;
+
+            imposto = salario * 0.06F;
+
+            if (salario >= 5000.01F && salario <= 10000F) {
+                imposto = salario * 0.08F;
+            } else if (salario > 10000F) {
+                imposto = salario * 0.10F;
             }
 
-            else
-            {
-                return salario * .10f;
+            return imposto;
+        }
+
+        public bool ValidarCNPJ(string CNPJ){
+            if (CNPJ.Length != 14 || CNPJ.Substring(CNPJ.Length - 6,4) != "0001"){
+                return false;
+            } else {
+                return true;
             }
         }
 
-        public bool ValidarCNPJ(string cnpj)
-        {
-            if(cnpj.Length >= 14 && cnpj.Substring(cnpj.Length -6, 4) == "0001") {
-
-                return true;
-            } else {
-                return false;
-            }
-        }    
+        public override bool GravarRegistro(){
+            return true;
+        }
     }
 }

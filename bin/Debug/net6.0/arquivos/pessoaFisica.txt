@@ -1,0 +1,3 @@
+CPF Cadastrado: 32123245567 - Nome: João
+CPF Cadastrado: 33332212245 - Nome: José
+CPF Cadastrado: 32456773111 - Nome: Maria
